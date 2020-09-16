@@ -2,6 +2,18 @@
 .select-pokemon-details-wrapper{
   height: 100%;
   width: 100%;
+  overflow: auto;
+  &::-webkit-scrollbar{
+    height: 4px;
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb{
+    background: rgba(0,0,0,.26);
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-track{
+    background: rgba(0,0,0,.10);
+  }
 }
 .select-pokemon-message-wrapper{
   height: 100%;
@@ -9,6 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto;
   h3{
     font-style: italic;
     color: map-get($mat-gray, 600);

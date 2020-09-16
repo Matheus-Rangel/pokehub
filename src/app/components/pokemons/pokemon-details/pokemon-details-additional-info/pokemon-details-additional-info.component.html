@@ -1,0 +1,10 @@
+<div class="pokemon-details-additional-info-wrapper">
+  <div *ngIf="username">
+    {{pokemon.base_experience}}
+    {{pokemon.height}}
+    {{pokemon.stats}}
+  </div>
+  <div *ngIf="!username">
+    Faça o Login para vizualizar informações adicionais.
+  </div>
+</div>

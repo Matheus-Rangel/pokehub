@@ -23,6 +23,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { PokemonDetailsGeneralInfoComponent } from './components/pokemons/pokemon-details/pokemon-details-general-info/pokemon-details-general-info.component';
 import { PokemonListTypesComponent } from './components/pokemons/pokemon-list-by-type/pokemon-list-types.component';
 import {SignupComponent} from './components/register/signup.component';
+import {PokemonDetailsAdditionalInfoComponent} from './components/pokemons/pokemon-details/pokemon-details-additional-info/pokemon-details-additional-info.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {SignupComponent} from './components/register/signup.component';
     PokemonDetailsComponent,
     PokemonListAllComponent,
     PokemonDetailsGeneralInfoComponent,
+    PokemonDetailsAdditionalInfoComponent,
     PokemonListTypesComponent
   ],
   imports: [
