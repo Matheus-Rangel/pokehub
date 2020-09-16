@@ -1,0 +1,21 @@
+<div class="pokemon-list-all-wrapper">
+  <h4 class="pokemon-list-all-title">Todos Pokémons</h4>
+  <mat-form-field  appearance="standard" class="pokemon-list-search">
+    <mat-label>Pesquise o nome do pokémon</mat-label>
+    <input  matInput (keyup)="filterList($event)" placeholder="Ex. Bulb...">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  <mat-divider class="pokemon-list-divider"></mat-divider>
+  <cdk-virtual-scroll-viewport class="pokemon-list-list" itemSize="50">
+    <mat-list>
+      <mat-list-item *cdkVirtualFor="let pokemon of pokemonListFiltered">
+        <img matListAvatar [src]="getSpriteUrl(pokemon)" onerror="this.src='assets/alt-img.png'">
+        <h2 matLine>{{upperFirstLetter(pokemon.name)}} </h2>
+        <button mat-icon-button (click)="selectPokemon(pokemon)">
+          <mat-icon color="primary">info</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </cdk-virtual-scroll-viewport>
+</div>

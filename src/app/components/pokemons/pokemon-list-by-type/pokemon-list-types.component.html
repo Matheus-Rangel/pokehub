@@ -1,0 +1,9 @@
+<div class="pokemon-list-all-wrapper">
+  <h4 class="pokemon-list-all-title">Tipos de Pokémon</h4>
+  <mat-selection-list class="pokemon-list-list" (click)="filterByType(selectedTypes)" #selectedTypes>
+    <mat-list-option [value]="type.name" *ngFor="let type of pokemonTypes">
+      <h2 matLine>{{upperFirstLetter(type.name)}} </h2>
+      <mat-divider></mat-divider>
+    </mat-list-option>
+  </mat-selection-list>
+</div>

@@ -1,0 +1,6 @@
+<div class="select-pokemon-details-wrapper">
+  <app-pokemon-details-general-info *ngIf="selectedPokemon" [pokemon]="selectedPokemon"></app-pokemon-details-general-info>
+  <div class="select-pokemon-message-wrapper" *ngIf="!selectedPokemon">
+    <h3>Nenhum Pokémon selecionado</h3>
+  </div>
+</div>

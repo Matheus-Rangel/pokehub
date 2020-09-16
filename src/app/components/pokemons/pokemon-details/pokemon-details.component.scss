@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+.select-pokemon-details-wrapper{
+  height: 100%;
+  width: 100%;
+}
+.select-pokemon-message-wrapper{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h3{
+    font-style: italic;
+    color: map-get($mat-gray, 600);
+  }
+}

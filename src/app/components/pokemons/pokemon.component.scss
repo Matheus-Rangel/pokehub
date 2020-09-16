@@ -1,0 +1,29 @@
+@import '~@angular/material/theming';
+.pokemon-container {
+  width: 100vw;
+  height: calc(100vh - 3rem);
+  background-color: map-get($mat-gray, 50);
+  display: flex;
+  justify-content: space-between;
+}
+.pokemon-list-all-container{
+  margin: 1rem;
+  height: calc(100vh - 7rem);
+  width: 25%;
+}
+.pokemon-list-by-type-container{
+  margin: 1rem;
+  height: calc(100vh - 7rem);
+  width: 30%;
+}
+.pokemon-details-container{
+  height: calc(100vh - 7rem);
+  margin: 1rem;
+  width: 45%;
+}
+.pokemon-list-divider{
+  height: calc(100vh - 3rem);
+  width: 2px;
+  border-radius: 1px;
+  background-color: map-get($mat-blue-gray, 50);
+}
