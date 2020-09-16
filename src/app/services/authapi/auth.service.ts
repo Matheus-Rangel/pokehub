@@ -7,10 +7,24 @@ import {User} from './user.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private authUrl = 'http://localhost:3000/login';
-  private isAuthenticated = false;
+  private authUrl = 'http://localhost:3000/';
+  private usernameSubject = new Subject<string>();
+  private username: string;
   constructor(private http: HttpClient) {}
-  authenticate(user: User): void{
-    this.http.post(this.authUrl, user).subscribe(value => this.isAuthenticated = true);
+  login(user: User): Observable<any>{
+    return this.http.post(this.authUrl + 'login', user);
+  }
+  setUsername(username: string): void{
+    this.username = username;
+    this.usernameSubject.next(username);
+  }
+  signup(user: User): Observable<any>{
+    return this.http.post(this.authUrl + 'signup', user);
+  }
+  getUsername(): string{
+    return this.username;
+  }
+  getUsernameObservable(): Observable<string>{
+    return this.usernameSubject.asObservable();
   }
 }

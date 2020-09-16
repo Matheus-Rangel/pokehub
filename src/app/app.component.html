@@ -1,8 +1,16 @@
 <div>
   <mat-toolbar color="primary">
+    <div class="toolbar-ghost"></div>
     <div class="pokehub-toolbar">
       <img class="pokehub-toolbar-icon" src="assets/pokeicon.svg">
       <span class="pokehub-toolbar-title">PokéHub</span>
+    </div>
+    <div class="pokehub-toolbar-auth" *ngIf="!username">
+      <a mat-button routerLink="/login">Entrar</a>
+      <a mat-button routerLink="/signup">Registrar</a>
+    </div>
+    <div *ngIf="username">
+      {{username}}
     </div>
   </mat-toolbar>
   <div>

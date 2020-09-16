@@ -1,6 +1,9 @@
 .mat-toolbar{
-  justify-content: center;
+  justify-content: space-between;
   height: 3rem;
+}
+.toolbar-ghost{
+  width: 9.5rem;
 }
 .pokehub-toolbar{
   justify-self: center;
