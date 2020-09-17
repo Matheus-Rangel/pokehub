@@ -11,17 +11,36 @@
   <div class="pokemon-sprite">
     <img [src]="pokemon.sprites.front_default" alt="">
   </div>
-  <div class="pokemon-special-atacks">
-    <h1>Ataques Especiais</h1>
-    <div class="pokemon-special-atack" *ngFor="let ability of pokemon.abilities">
-      <div class="pokemon-atack-divider"></div>
-      <div class="pokemon-special-atack-stats">
-        <p>{{upperFirstLetter(ability.ability.name)}}</p>
-        <p>10 DMG</p>
-        <div>
-          <p class="pokemon-type">Grass</p>
-        </div>
-      </div>
+  <div class="pokemon-actions">
+    <div class="pokemon-moves">
+      <p class="actions-title">Movimentos</p>
+      <app-moves-table class="moves-table" [moves]="moves"></app-moves-table>
+    </div>
+    <div class="pokemon-actions-divider"></div>
+    <div class="pokemon-abilities">
+      <p class="actions-title">Habilidades</p>
+      <mat-list class="pokemon-abilities-list">
+        <mat-list-item *ngFor="let a of abilities">
+          <mat-divider></mat-divider>
+          {{upperFirstLetter(a.name)}}
+        </mat-list-item>
+      </mat-list>
     </div>
   </div>
+<!--  <div class="pokemon-actions">-->
+<!--    <div class="pokemon-moves">-->
+<!--      <h3>Movimentos</h3>-->
+<!--      <app-moves-table [moves]="moves"></app-moves-table>-->
+<!--    </div>-->
+<!--    <div class="pokemon-special-atacks">-->
+<!--      <h3>Ataques Especiais</h3>-->
+<!--      <div class="pokemon-special-atack" *ngFor="let ability of abilities">-->
+<!--        <div class="pokemon-action-divider"></div>-->
+<!--        <div class="pokemon-action-stats">-->
+<!--          <p>{{upperFirstLetter(ability.name)}}</p>-->
+<!--          <p *ngFor="let effect of ability.effects_entries">{{effect.short_effect}}</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 </div>

@@ -1,17 +1,21 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Pokemon} from '../../../../services/pokeapi/pokemon.model';
+import {Ability} from '../../../../services/pokeapi/ability.model';
+import {Move} from '../../../../services/pokeapi/move.model';
+import {PokeapiService} from '../../../../services/pokeapi/pokeapi.service';
 
 @Component({
   selector: 'app-pokemon-details-general-info',
   templateUrl: './pokemon-details-general-info.component.html',
   styleUrls: ['./pokemon-details-general-info.component.scss']
 })
-export class PokemonDetailsGeneralInfoComponent implements OnInit {
+export class PokemonDetailsGeneralInfoComponent implements  OnChanges {
   @Input() pokemon: Pokemon;
-  constructor() { }
+  abilities: Ability[];
+  moves: Move[];
 
-  ngOnInit(): void {
-  }
+  constructor(private pokeService: PokeapiService) { }
+
   upperFirstLetter(name: string): string{
     return name.charAt(0).toUpperCase() + name.slice(1);
   }
@@ -25,5 +29,22 @@ export class PokemonDetailsGeneralInfoComponent implements OnInit {
     if (id < 1000){
       return id.toString();
     }
+  }
+  private updateStats(): void{
+    if (this.pokemon) {
+      this.abilities = [];
+      this.moves = [];
+      this.pokemon.abilities.forEach(value => this.pokeService.getAbility(value.ability.url).subscribe(
+        ability => this.abilities.push(ability)
+      ));
+      this.pokemon.moves.forEach(value => this.pokeService.getMove(value.move.url).subscribe(
+        move => {
+          this.moves = [...this.moves, move];
+        }
+      ));
+    }
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.updateStats();
   }
 }

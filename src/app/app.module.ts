@@ -24,6 +24,9 @@ import { PokemonDetailsGeneralInfoComponent } from './components/pokemons/pokemo
 import { PokemonListTypesComponent } from './components/pokemons/pokemon-list-by-type/pokemon-list-types.component';
 import {SignupComponent} from './components/register/signup.component';
 import {PokemonDetailsAdditionalInfoComponent} from './components/pokemons/pokemon-details/pokemon-details-additional-info/pokemon-details-additional-info.component';
+import { MovesTableComponent } from './components/pokemons/moves-table/moves-table.component';
+import { AbilitiesTableComponent } from './components/pokemons/abilities-table/abilities-table.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import {PokemonDetailsAdditionalInfoComponent} from './components/pokemons/pokem
     PokemonListAllComponent,
     PokemonDetailsGeneralInfoComponent,
     PokemonDetailsAdditionalInfoComponent,
-    PokemonListTypesComponent
+    PokemonListTypesComponent,
+    MovesTableComponent,
+    AbilitiesTableComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,7 @@ import {PokemonDetailsAdditionalInfoComponent} from './components/pokemons/pokem
     MatProgressSpinnerModule,
     MatListModule,
     MatTabsModule,
+    MatTableModule,
     ScrollingModule
   ],
   providers: [],

@@ -7,6 +7,8 @@ import {NamedAPIResource} from './names-api-resource.model';
 import {buffer, concatAll, exhaust, map, mergeAll, toArray} from 'rxjs/operators';
 import {isDataSource} from '@angular/cdk/collections';
 import {Type} from './types.model';
+import {Ability} from './ability.model';
+import {Move} from './move.model';
 
 @Injectable({
   providedIn: 'root'
@@ -59,7 +61,6 @@ export class PokeapiService {
           this.http.get<Type>(typeResource.url).subscribe(type => {
             this.pokemonTypes.push(type);
             this.pokemonTypesSubject.next([...this.pokemonTypes]);
-            console.log(this.pokemonTypes);
           });
         });
     });
@@ -71,6 +72,12 @@ export class PokeapiService {
   }
   getSelectedPokemon(): Observable<Pokemon> {
     return this.selectedPokemonSubject.asObservable();
+  }
+  getAbility(url: string): Observable<Ability>{
+    return this.http.get<Ability>(url);
+  }
+  getMove(url: string): Observable<Move>{
+    return this.http.get<Move>(url);
   }
   selectPokemon(url: string): void {
     this.http.get<Pokemon>(url).subscribe(
