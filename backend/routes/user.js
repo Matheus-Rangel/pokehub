@@ -1,5 +1,4 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
@@ -7,25 +6,23 @@ const User = require("../models/user");
 const router = express.Router();
 
 router.post("/signup", (req, res, next) => {
-  bcrypt.hash(req.body.password, 10).then(hash => {
-    const user = new User({
-      username: req.body.username,
-      password: hash
-    });
-    user
-      .save()
-      .then(result => {
-        res.status(201).json({
-          message: "User created!",
-          result: result
-        });
-      })
-      .catch(err => {
-        res.status(500).json({
-          error: err
-        });
-      });
+  const user = new User({
+    username: req.body.username,
+    password: req.body.password
   });
+  user
+    .save()
+    .then(result => {
+      res.status(201).json({
+        message: "User created!",
+        result: result
+      });
+    })
+    .catch(err => {
+      res.status(500).json({
+        error: err
+      });
+    });
 });
 
 router.post("/login", (req, res, next) => {
@@ -38,7 +35,7 @@ router.post("/login", (req, res, next) => {
         });
       }
       fetchedUser = user;
-      return bcrypt.compare(req.body.password, user.password);
+      return req.body.password === user.password;
     })
     .then(result => {
       if (!result) {

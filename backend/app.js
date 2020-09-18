@@ -8,12 +8,13 @@ const app = express();
 
 mongoose
   .connect(
-    "localhost:5432"
+    'mongodb://localhost:27017/pokehub'
   )
   .then(() => {
     console.log("Connected to database!");
   })
-  .catch(() => {
+  .catch((er) => {
+    console.log(er)
     console.log("Connection failed!");
   });
 
